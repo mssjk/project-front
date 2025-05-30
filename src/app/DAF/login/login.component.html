@@ -1,0 +1,108 @@
+<!-- Navbar -->
+<app-navbar></app-navbar>
+
+<main>
+  <!-- Login Form -->
+  <div class="container-fluid">
+    <div class="row min-vh-100">
+      <div class="col-md-6 d-none d-md-flex align-items-center justify-content-center text-white">
+        <div class="text-center img">
+          <img class="logo" src="{{getLogo()}}" alt="Logo" />
+          <h4 class="mt-3">{{ 'login.heroSection.heading' | translate }}</h4>
+          <img id="DonationImg" src="{{getImg()}}" alt="Donation Image" class="img-fluid" />
+        </div>
+      </div>
+      <div class="col-md-6 d-flex align-items-center justify-content-center">
+        <div class="container">
+          <div class="login-box mt-0">
+            <h4 class="text-center mb-4">{{ 'login.form.title' | translate }}</h4>
+        
+            <form (ngSubmit)="loginUser()">
+              <div class="mb-3">
+                <label for="username" class="form-label">{{ 'login.form.fields.email' | translate }}</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="username"
+                  placeholder="{{ 'login.form.placeholders.email' | translate }}"
+                  [(ngModel)]="loginData.email"
+                  name="email"
+                  required
+                />
+              </div>
+
+              <div class="mb-4">
+                <label for="password" class="form-label">{{ 'login.form.fields.password' | translate }}</label>
+                <div class="input-group">
+                  <input
+                    [type]="showPassword ? 'text' : 'password'"
+                    class="form-control"
+                    id="password"
+                    placeholder="{{ 'login.form.placeholders.password' | translate }}"
+                    [(ngModel)]="loginData.password"
+                    name="password"
+                    required
+                  />
+                  <span class="input-group-text toggle-password" (click)="togglePassword()">
+                    <i class="fa" [ngClass]="showPassword ? 'fa-solid fa-eye-slash' : 'fa-solid fa-eye'"></i>
+                  </span>
+                </div>
+              </div>
+        
+              <div class="d-grid">
+                <button type="submit" class="btn login-btn" >
+                  {{ 'login.form.buttons.login' | translate }}
+                </button>
+              </div>
+              
+              <div class="mt-3 text-center route">
+                <span>{{ 'login.form.links.noAccount' | translate }}</span>
+                <a routerLink="/register-daf">
+                  {{ 'login.form.buttons.createAccount' | translate }}
+                </a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Error Modal -->
+  <div
+    class="modal fade"
+    id="dafErrorModal"
+    tabindex="-1"
+    aria-labelledby="dafErrorModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="dafErrorModalLabel">{{ 'login.modals.error.title' | translate }}</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          {{ 'login.modals.error.message' | translate }}
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            {{ 'login.modals.error.close' | translate }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Footer -->
+<div class="mt-5"><app-footer></app-footer></div>

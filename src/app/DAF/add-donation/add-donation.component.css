@@ -1,0 +1,256 @@
+body {
+  background-color: #f0f2f5;
+}
+
+.sidebar {
+  background-color: #005f83;
+  color: white;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+.section-box {
+  background-color: white;
+  color: #005f83;
+  padding: 1rem;
+  border-radius: 5px;
+  margin-top: 1rem;
+}
+
+.form-section {
+  display: block !important; /* Ensure the form is always visible */
+}
+.search-bar {
+  background-color: #fff;
+
+  font-weight: 500;
+  border: none;
+
+  width: 70%;
+  height: 45px;
+  font-size: 1.2rem;
+  border-radius: 25px;
+  padding: 10px 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.search-bar:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+.view{
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: #005f83;
+  border-color: #005f83;
+  border-radius: 20px;
+  padding: 12px 30px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #004060;
+  border-color: #004060;
+}
+
+.horizontal-line {
+  height: 4px;
+  background-color: #ccc;
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+footer {
+  background-color: #005f83;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  position: relative; /* Ensure footer is positioned correctly */
+  bottom: 0; /* Stick to the bottom of the page */
+  height: 70px;
+}
+
+.input-group{
+  
+              border-radius: 10px;
+              overflow: hidden;
+              box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            
+}
+
+.input-group-text {
+  background-color: #005f83; 
+  color: white; 
+  font-weight: bold;
+}
+
+#donationAmount {
+  border: none; 
+  font-size: 1.2rem; 
+  padding: 10px;
+}
+
+.table-container {
+  overflow-x: auto;
+  margin-top: 1rem;
+  border-radius: 10px;
+}
+.table-hover{
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); border-radius: 10px; overflow: hidden
+}
+
+.table {
+  margin-top: 20px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.table th {
+  background-color: #005f83;
+  color: #ffffff;
+  text-align: center;
+}
+
+.table td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+#donation{
+
+              border-radius: 10px;
+              overflow: hidden;
+              box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+}
+
+#donationicon {
+  background-color: #005f83; color: white; font-weight: bold
+}
+
+#donationDesc {
+  border: none; font-size: 1.2rem; padding: 10px
+}
+.input-field {
+  background-color: #f1f5fb;
+  border-radius: 20px;
+  padding: 12px 20px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  border: none;
+  width: 100%;
+  margin-top: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.input-field:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.form-label {
+  font-size: 1rem;
+  color: #333;
+}
+
+input::placeholder {
+  color: rgb(126, 125, 125);
+  opacity: 0.7;
+}
+
+.is-invalid {
+  border-color: #dc3545;
+}
+
+textarea::placeholder {
+  color: rgb(126, 125, 125);
+  opacity: 0.7;
+}
+.col-md-9 {
+  position: relative; /* This ensures the overlay is positioned relative to this container */
+}
+
+/* Position the charity list as an overlay */
+.charity-list-overlay {
+  z-index: 1000;
+
+  border: 1px solid #ccc;
+
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 70%;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: #f9f9f9;
+  max-height: 300px;
+  overflow-y: auto;
+  position: absolute;
+  top: 60px;
+  left: 15%;
+}
+
+.text-start ,.text-center ,.text-end {
+  flex: 1;
+  
+}
+.text-start {
+  font-weight: bold;
+}
+
+.charityname{
+  cursor: pointer;
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.parent-container {
+  position: relative;
+}
+
+.donation-form {
+  display: block !important; /* Ensures visibility */
+}
+
+/* Highlight selected charity */
+.charity-list-overlay .bg-light {
+  background-color: #f8f9fa !important;
+}
+
+/* Add hover effect for list items */
+.charity-list-overlay div:hover {
+  background-color: #e9ecef;
+  cursor: pointer;
+}
+
+.nav-link.active {
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+}
+
+/* Style for the disabled Donate button */
+button:disabled {
+  background-color: #07819c;
+  opacity: 0.7;
+}
+@media (min-width: 992px) {
+  .form-section {
+    display: none;
+  }
+}
+.nav-link {
+  color: rgb(150, 230, 250);
+  transition: color 0.3s ease; /*To add a smooth transition */
+}
+
+span p {
+  margin: 2px 0;
+  padding: 0;
+}
+
+.custom-text {
+  font-family: var(--bs-body-font-family);
+  font-size: 1rem;
+}

@@ -1,0 +1,234 @@
+<!-- Navbar -->
+<app-navbar></app-navbar>
+<main>
+  <div class="container-fluid mt-4">
+    <h4 class="text-center fw-bold">{{ 'addDonation.title' | translate }}</h4>
+    <hr class="horizontal-line" />
+
+    <div class="row">
+      <!-- Sidebar -->
+      <div class="col-md-3 mb-4">
+        <div class="sidebar">
+          <h5>{{ 'dashboard.sidebar.totalBalance' | translate }}</h5>
+          <h3>₹{{ dafBalance }}</h3>
+        </div>
+
+        <div class="section-box">
+          <h6>{{ 'dashboard.sidebar.totalDonation' | translate }}</h6>
+          <h4>₹{{ totalDonated }}</h4>
+        </div>
+
+        <div class="section-box">
+          <h6>{{'dashboard.sidebar.charitiesDonatedTo' | translate}}</h6>
+          <span *ngIf="charitiesDonatedTo.length !== 0; else noCharities">
+            <p *ngFor="let charity of visibleCharities" ><i class='bx bxs-donate-heart'>&nbsp;<span class="custom-text">{{ charity.name }}</span></i></p>
+            <p *ngIf="charitiesDonatedTo.length>5" class="text-decoration-underline cursor-pointer view" (click)="toggleShowAll()">{{ showAll ? ('dashboard.sidebar.viewless' | translate) : ('dashboard.sidebar.viewmore' | translate) }}</p>
+        </span>
+          <ng-template #noCharities>
+            <p>{{'dashboard.sidebar.noCharities' | translate}}</p>
+          </ng-template>
+        </div>
+      </div>
+
+      <!-- Donation Form -->
+      <div class="col-md-9">
+        <!-- Search Bar -->
+        <div class="parent-container position-relative d-flex justify-content-center">
+          <input
+            type="text"
+            class="form-control search-bar"
+            placeholder="{{ 'addDonation.search.placeholder' | translate }}"
+            [(ngModel)]="searchTerm"
+            (focus)="showCharityList = true"
+            (blur)="hideCharityList()"
+          />
+
+          <div class="charity-list-overlay" *ngIf="showCharityList">
+            <div
+              *ngFor="let charity of filteredCharities"
+              class="p-2 border-bottom d-flex justify-content-between align-items-center charityname"
+              (click)="selectCharity(charity)"
+            >
+              <span class="text-start">{{ charity.name }}</span>
+              <span class="text-center">{{ charity.category }}</span>
+              <span class="text-end">{{ charity.location }}</span>
+            </div>
+            <div *ngIf="filteredCharities.length === 0" class="p-2 text-center">
+              <strong>{{ 'dashboard.table.noResults' | translate }}</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- Donation Form -->
+        <div *ngIf="selectedCharities.length > 0">
+          <div class="mb-4">
+            <label for="donationAmount" class="form-label fw-bold">
+              {{ 'addDonation.form.amount' | translate }}
+            </label>
+            <div class="input-group mb-3">
+              <span class="input-group-text">₹</span>
+              <input
+                type="number"
+                id="totalDonationAmount"
+                class="form-control"
+                [(ngModel)]="totalDonationAmount"
+                (input)="splitDonationEqually()"
+              />
+            </div>
+          </div>
+
+          <div class="form-section mt-4">
+            <h5 class="mb-4 text-center">
+              {{ 'addDonation.form.donatingTo' | translate }}
+            </h5>
+            <div class="table-container">
+            <table class="table table-hover align-middle " >
+              <thead class="table-header">
+                <tr>
+                  <th>{{ 'addDonation.table.headers.charity' | translate }}</th>
+                  <th>{{ 'addDonation.table.headers.percentage' | translate }}</th>
+                  <th>{{ 'addDonation.table.headers.amount' | translate }}</th>
+                  <th>{{ 'addDonation.table.headers.actions' | translate }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let charity of selectedCharities; let i = index">
+                  <td>{{ charity.name }}</td>
+                  <td>
+                    <span *ngIf="!isEditing">
+                      {{ charity.percentage }}%
+                    </span>
+                    <input
+                      *ngIf="isEditing"
+                      type="number"
+                      class="form-control"
+                      [(ngModel)]="charity.percentage"
+                      (input)="updateAmountsFromPercentage()"
+                    />
+                  </td>
+                  <td>₹{{ charity.donationAmount }}</td>
+                  <td>
+                    <button
+                      class="btn btn-danger btn-sm"
+                      (click)="removeCharity(i)"
+                    >
+                      {{ 'addDonation.table.actions.remove' | translate }}
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+            <div class="text-end">
+              <button
+                class="btn btn-secondary btn-sm"
+                (click)="toggleEditPartition()"
+              >
+                {{ isEditing ? 'Done Editing' : 'Edit Partition' }}
+              </button>
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <label for="donationDesc" class="form-label fw-bold">
+              {{ 'addDonation.form.description' | translate }}
+            </label>
+            <div class="input-group">
+              <span class="input-group-text">🤍</span>
+              <textarea
+                id="donationDesc"
+                class="form-control"
+                [(ngModel)]="donationDesc"
+                rows="4"
+                placeholder="{{ 'addDonation.form.descriptionPlaceholder' | translate }}"
+                required
+                [ngClass]="{ 'is-invalid': containsHtmlTags(donationDesc) }"
+              ></textarea>
+            </div>
+            <div *ngIf="containsHtmlTags(donationDesc)" class="text-danger mt-1">
+              <small>{{ 'addDonation.form.htmlTagsError' | translate }}</small>
+            </div>
+          </div>
+
+          <!-- Terms and Donate Button -->
+          <div class="form-check mt-4">
+            <input
+              type="checkbox"
+              class="form-check-input"
+              id="terms"
+              [(ngModel)]="agreedToTerms"
+            />
+            <label class="form-check-label" for="terms">
+              {{ 'addDonation.form.terms' | translate }}
+            </label>
+          </div>
+
+          <div class="text-center mt-4">
+            <button
+              class="btn btn-primary btn-lg"
+              (click)="donate()"
+              [disabled]="!agreedToTerms || selectedCharities.length === 0"
+            >
+              {{ 'addDonation.form.donateButton' | translate }}
+            </button>
+          </div>
+        </div>
+                <!-- Add this section below the existing donation form -->
+        
+        <div *ngIf="selectedCharities.length === 0" class="recommendation-box mt-5 p-4 rounded bg-light">
+          <h4 class="text-center fw-bold text-primary mb-4">
+            <i class="bi bi-lightbulb-fill text-warning"></i>
+            {{ 'addDonation.recommendation.title' | translate }}
+          </h4>
+        
+          <!-- Amount Input -->
+          <div class="mb-4">
+            <label for="recommendationAmount" class="form-label fw-bold text-secondary">
+              <i class="bi bi-currency-rupee"></i> {{ 'addDonation.recommendation.amount' | translate }}
+            </label>
+            <div class="input-group">
+              <span class="input-group-text bg-light text-dark border">
+                <i class="bi bi-currency-rupee"></i>
+              </span>
+              <input
+                type="number"
+                id="recommendationAmount"
+                class="form-control border"
+                [(ngModel)]="recommendationAmount"
+                placeholder="{{ 'addDonation.recommendation.amountPlaceholder' | translate }}"
+              />
+            </div>
+          </div>
+        
+          <!-- Category Dropdown -->
+          <div class="mb-4">
+            <label for="recommendationCategory" class="form-label fw-bold text-secondary">
+              <i class="bi bi-tags-fill"></i> {{ 'addDonation.recommendation.category' | translate }}
+            </label>
+            <select
+              id="recommendationCategory"
+              class="form-select border"
+              [(ngModel)]="recommendationCategory"
+            >
+              <option *ngFor="let category of categories" [value]="category">
+                {{ category }}
+              </option>
+            </select>
+          </div>
+        
+          <!-- Submit Button -->
+          <div class="text-center">
+            <button
+              class="btn btn-success btn-lg px-5 animate__animated animate__pulse"
+              (click)="getRecommendation()"
+              [disabled]="!recommendationAmount || !recommendationCategory"
+            >
+              <i class="bi bi-search"></i> {{ 'addDonation.recommendation.submitButton' | translate }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+<div class="mt-5"><app-footer></app-footer></div>

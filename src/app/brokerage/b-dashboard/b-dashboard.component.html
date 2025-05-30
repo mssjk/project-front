@@ -1,0 +1,92 @@
+
+<!-- Navbar -->
+<app-navbar></app-navbar>
+
+<!-- Dashboard Section -->
+<div class="container-fluid mt-4">
+  <h4 class="text-center fw-bold">{{'dashboard.title' | translate}}</h4>
+  <hr class="horizontal-line">
+
+  <div class="row">
+    <!-- Sidebar -->
+    <div class="col-md-3 mb-4">
+      <div class="sidebar">
+        <h5>{{'dashboard.sidebar.totalBalance' | translate}}</h5>
+        <h3>₹{{ totalBalance }}</h3>
+      </div>
+
+      <div class="section-box">
+        <h6>{{'dashboard.sidebar.totalTransfer' | translate}}</h6>
+        <h4>₹{{ totalTransfers }}</h4>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="col-md-9">
+      <!-- Previous Transfers -->
+      <div class="mb-4">
+        <h5 class="fw-bold">{{'dashboard.previousTransfer' | translate}}</h5>
+        <div *ngIf="previousTransfers.length > 0; else noTransfers">
+          <table class="table table-hover align-middle" >
+            <thead>
+              <tr>
+                <th>{{'dashboard.table.headers.AccNo' | translate}}</th>
+                <th>{{'dashboard.table.headers.Amt' | translate}}</th>
+                <th>{{'dashboard.table.headers.ref' | translate}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let transfer of previousTransfers">
+                <td>{{ transfer.dafAccountNumber }}</td>
+                <td>{{ transfer.amount }}</td>
+                <td>{{ transfer.referenceNote }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <ng-template #noTransfers>
+          <p class="text-center">{{'dashboard.table.noTransfers' | translate}}</p>
+        </ng-template>
+      </div>
+
+      <!-- Transfer to DAF Button -->
+      <div class="text-center">
+        <button class="btn btn-primary btn-lg" (click)="openTransferModal()">Transfer to DAF</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Transfer Modal -->
+<div class="modal fade" id="transferModal" tabindex="-1" aria-labelledby="transferModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="transferModalLabel">{{'dashboard.Transfer.title' | translate}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="transferForm" (ngSubmit)="initiateTransfer()">
+          <div class="mb-3">
+            <label for="accountNumber" class="form-label">{{'dashboard.Transfer.form.AccNo' | translate}}</label>
+            <input type="text" id="accountNumber" class="form-control" formControlName="accountNumber" placeholder="Enter DAF Account Number" />
+          </div>
+          <div class="mb-3">
+            <label for="amount" class="form-label">{{'dashboard.Transfer.form.Amt' | translate}}</label>
+            <input type="number" id="amount" class="form-control" formControlName="amount" placeholder="Enter Amount" />
+          </div>
+          <div class="mb-3">
+            <label for="reference" class="form-label">{{'dashboard.Transfer.form.ref' | translate}}</label>
+            <input type="text" id="reference" class="form-control" formControlName="reference" placeholder="Enter Reference" />
+          </div>
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary">{{'dashboard.Transfer.trans' | translate}}</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="mt-5"><app-footer ></app-footer></div>

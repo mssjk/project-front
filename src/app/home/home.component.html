@@ -1,0 +1,79 @@
+<!-- Navbar -->
+<app-navbar></app-navbar>
+<!-- Content -->
+<!-- Hero Section -->
+<main>
+  <section
+    class="hero-section text-white text-center py-5"
+  >
+    <div class="container">
+      <h1 class="display-5 fw-bold">{{ "home.heroSection.heading" | translate }}</h1>
+      <p class="lead">{{ "home.heroSection.subheading" | translate }}</p>
+    </div>
+  </section>
+
+  <!-- Call to Action Box -->
+  <section class="text-center my-5">
+    <div class="container">
+      <h4 class="mb-4 ">
+        {{ "home.callToAction.title" | translate }}
+      </h4>
+      <div class="row justify-content-center">
+        <div class="col-10 col-sm-8 col-md-6 col-lg-4">
+          <div class="benefit-box p-5 shadow-sm rounded bg-white h-100">
+            <a routerLink="/brokerage" class="d-block mb-2 text-decoration-none text-dark">
+              <i class="bi bi-cash-coin" ></i> 
+              <span class="ms-2">{{ "home.callToAction.brokerage" | translate }}</span>
+            </a>
+            <a routerLink="/login" class="d-block mb-2 text-decoration-none text-dark">
+              <i class="bi bi-key" ></i> 
+              <span class="ms-2">{{ "home.callToAction.login" | translate }}</span>
+            </a>
+            <a routerLink="/register-daf" class="d-block text-decoration-none text-dark">
+              <i class="bi bi-pencil-square" ></i> 
+              <span class="ms-2">{{ "home.callToAction.register" | translate }}</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="py-5 bg-light text-center">
+    <div class="container">
+      <h4 class="mb-4">
+        {{ "home.benefits.title" | translate }}
+      </h4>
+      <div class="row">
+        <div class="col-md-4 mb-3">
+          <div class="benefit-box p-3 shadow-sm rounded bg-white h-100">
+            <div class="spacing" >🔒</div>
+            <h6 class="mt-2">{{ "home.benefits.secure.heading" | translate }}</h6>
+            <p class="small">{{ "home.benefits.secure.description" | translate }}</p>
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <div class="benefit-box p-3 shadow-sm rounded bg-white h-100">
+            <div class="spacing"  >📊</div>
+            <h6 class="mt-2">{{ "home.benefits.track.heading" | translate }}</h6>
+            <p class="small">{{ "home.benefits.track.description" | translate }}</p>
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <div class="benefit-box p-3 shadow-sm rounded bg-white h-100">
+            <div class="spacing" >🌐</div>
+            <h6 class="mt-2">{{ "home.benefits.network.heading" | translate }}</h6>
+            <p class="small">
+              {{ "home.benefits.network.description" | translate }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<!-- Account Options -->
+
+<!-- Footer -->
+<div class="mt-5"><app-footer></app-footer></div>

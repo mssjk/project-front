@@ -1,0 +1,107 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure the body takes the full height of the viewport */
+    margin: 0; /* Remove default margin */
+    background-color: #f0f2f5;
+  }
+  
+  
+  
+    .login-box {  
+  
+  
+  
+      max-width: 400px;  
+  
+  
+  
+      margin: auto;  
+  
+  
+  
+      margin-top: 8%;  
+  
+  
+  
+      background-color: white;  
+  
+  
+  
+      border-radius: 15px;  
+  
+  
+  
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);  
+  
+  
+  
+      padding: 30px;  
+  
+  
+  
+    }  
+  
+    .main-content {
+      flex: 1; /* Allow the main content to grow and take available space */
+  }
+  
+    .form-control {  
+  
+  
+  
+      border-radius: 10px;  
+  
+  
+  
+    }  
+  
+  
+  
+    .btn{  
+  
+  
+  
+      border-radius: 10px;  
+  
+  
+  
+    }  
+  
+    .img .logo {
+      max-height: 100px;
+      border-radius: 8px;
+    }
+
+    .login-btn{
+      background-color: #005F83; color:white;
+    }
+    
+    .img #DonationImg {
+      width: 60%;
+      height: 60%;
+    }
+
+    h4{
+      color: #005F83;
+    }
+  
+    .navbar-brand img {  
+  
+  
+  
+      height: 40px;  
+  
+  
+  
+    }  
+  
+    footer{
+      background-color: #005F83;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+      position:fixed; /* Ensure footer is positioned correctly */
+      bottom: 0; /* Stick to the bottom of the page */
+      height: 70px;
+    }

@@ -1,0 +1,140 @@
+/* General Styles */
+.container-fluid {
+  padding: 20px;
+}
+
+h4 {
+  color: #005f83;
+  font-weight: bold;
+}
+
+hr.horizontal-line {
+  border: 1px solid #005f83;
+}
+
+/* Sidebar Styles */
+.sidebar {
+  background-color: #f8f9fa;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.sidebar h5 {
+  font-size: 1.2rem;
+  color: #005f83;
+}
+
+.sidebar h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.section-box {
+  background-color: #ffffff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.section-box h6 {
+  font-size: 1rem;
+  color: #005f83;
+}
+
+.section-box h4 {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Table Styles */
+.table {
+  margin-top: 20px;
+ 
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); border-radius: 10px; overflow: hidden;
+}
+
+.table th {
+  background-color: #005f83;
+  color: #ffffff;
+  text-align: center;
+}
+
+.table td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+/* Modal Styles */
+.modal-content {
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+  background-color: #005f83;
+  color: #ffffff;
+  border-bottom: none;
+}
+
+.modal-title {
+  font-size: 1.5rem;
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+.modal-footer {
+  border-top: none;
+}
+
+.btn-primary {
+  background-color: #005f83;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #004a66;
+}
+
+.btn-close {
+  color: #ffffff;
+  opacity: 0.8;
+}
+
+.btn-close:hover {
+  color: #ffffff;
+  opacity: 1;
+}
+
+/* Button Styles */
+.btn-lg {
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  border-radius: 8px;
+}
+
+.text-center {
+  margin-top: 20px;
+}
+
+.nav-link {
+  color: rgb(150, 230, 250);
+  transition: color 0.3s ease; 
+  }
+
+  footer{
+    background-color: #005F83;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    position:fixed; /* Ensure footer is positioned correctly */
+    bottom: 0; /* Stick to the bottom of the page */
+    height: 70px;
+  }

@@ -1,0 +1,60 @@
+<!-- Navbar -->
+<app-navbar></app-navbar>
+
+<!-- View Transfers Section -->
+<div class="container-fluid mt-4">
+  <h4 class="text-center fw-bold">{{'viewTransfer.title' | translate}}</h4>
+  <hr class="horizontal-line">
+
+  <div class="row">
+    <!-- Filters -->
+    <div class="col-md-3 mb-4">
+      <div class="sidebar">
+        <h5>{{'dashboard.sidebar.totalTransfer' | translate}}</h5>
+        <h3>₹{{ totalTransfers }}</h3>
+      </div>
+      <div class="section-box mt-3">
+        <h6>{{'viewTransfer.fil' | translate}}</h6>
+        <select class="form-select" [(ngModel)]="selectedDuration" (change)="filterTable()" >
+          <option value="">{{'viewTransfer.filters.durations' | translate}}</option>
+          <option value="24hours">{{'viewTransfer.filters.last24Hours' | translate}}</option>
+          <option value="1">{{'viewTransfer.filters.lastMonth' | translate}}</option>
+          <option value="3">{{'viewTransfer.filters.last3Months' | translate}}</option>
+          <option value="6">{{'viewTransfer.filters.last6Months' | translate}}</option>
+          <option value="12">{{'viewTransfer.filters.lastYear' | translate}}</option>
+        </select>
+        <button class="btn btn-primary mt-3" (click)="clearFilters()">{{'viewTransfer.clr' | translate}}</button>
+      </div>
+    </div>
+
+    <!-- Transfers Table -->
+    <div class="col-md-9">
+      <div class="table-container">
+        <table class="table table-hover align-middle " >
+          <thead class="table-header">
+            <tr>
+              <th>{{'viewTransfer.table.headers.transferId' | translate}}</th>
+              <th>{{'viewTransfer.table.headers.charity' | translate}}</th>
+              <th>{{'viewTransfer.table.headers.amount' | translate}}</th>
+              <th>{{'viewTransfer.table.headers.date' | translate}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let transfer of filteredTransfers">
+              <td>{{ transfer.transferId }}</td>
+              <td>{{ transfer.dafAccountNumber }}</td>
+              <td>{{ transfer.amount }}</td>
+              <td>{{ formatDateTime(transfer.date) }}</td>
+            </tr>
+            <tr *ngIf="filteredTransfers.length === 0">
+              <td colspan="4" class="text-center">{{'viewTransfer.noResults' | translate}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="mt-5"><app-footer ></app-footer></div>

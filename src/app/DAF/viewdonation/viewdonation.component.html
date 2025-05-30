@@ -1,0 +1,105 @@
+<app-navbar></app-navbar>
+
+<!-- View Donations Section -->
+<div class="container-fluid mt-4">
+  <h4 class="text-center fw-bold">{{'viewDonation.title' | translate}}</h4>
+  <hr class="horizontal-line" />
+
+  <div class="row">
+    <!-- Sidebar -->
+    <div class="col-md-3 mb-4">
+      <div class="sidebar">
+        <h5>{{'dashboard.sidebar.totalBalance' | translate}}</h5>
+        <h3>₹{{ dafBalance }}</h3>
+      </div>
+      <div class="section-box">
+        <h6>{{'dashboard.sidebar.totalDonation' | translate}}</h6>
+        <h4>₹{{ totalDonations }}</h4>
+      </div>
+      <div class="section-box">
+        <h6>{{'dashboard.sidebar.charitiesDonatedTo' | translate}}</h6>
+        <span *ngIf="charitiesDonatedTo.length !== 0; else noCharities">
+          <p *ngFor="let charity of visibleCharities" ><i class='bx bxs-donate-heart'>&nbsp;<span class="custom-text">{{ charity.name }}</span></i></p>
+          <p *ngIf="donations.length>5" class="text-decoration-underline cursor-pointer view" (click)="toggleShowAll()">{{ showAll ? ('dashboard.sidebar.viewless' | translate) : ('dashboard.sidebar.viewmore' | translate) }}</p>
+      </span>
+        <ng-template #noCharities>
+          <p>{{'dashboard.sidebar.noCharities' | translate}}</p>
+        </ng-template>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="col-md-9">
+      <!-- Filters -->
+      <div class="d-flex justify-content-between mb-4">
+        <select class="form-select" [(ngModel)]="selectedSector" (change)="filterTable()" >
+          <option value="">{{'viewDonation.filters.sectors' | translate}}</option>
+          <option *ngFor="let sector of uniqueSectors" [value]="sector">{{ sector }}</option>
+        </select>
+
+        <select class="form-select" [(ngModel)]="selectedDuration" (change)="filterTable()">
+          <option value="">{{'viewDonation.filters.durations' | translate}}</option>
+          <option value="24hours">{{'viewDonation.filters.last24Hours' | translate}}</option> <!-- New Duration Option -->
+          <option value="1">{{'viewDonation.filters.lastMonth' | translate}}</option>
+          <option value="3">{{'viewDonation.filters.last3Months' | translate}}</option>
+          <option value="6">{{'viewDonation.filters.last6Months' | translate}}</option>
+          <option value="12">{{'viewDonation.filters.lastYear' | translate}}</option>
+        </select>
+      
+      </div>
+
+      <!-- Donations Table -->
+      <div class="table-container">
+        <table class="table table-hover align-middle" >
+          <thead class="table-header">
+            <tr>
+              <th>{{'viewDonation.table.headers.donationId' | translate}}</th>
+              <th>{{'viewDonation.table.headers.charity' | translate}}</th>
+              <th>{{'viewDonation.table.headers.amount' | translate}}</th>
+              <th>{{'viewDonation.table.headers.date' | translate}}</th>
+              <th>{{'viewDonation.table.headers.sector' | translate}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let donation of paginatedDonations">
+              <td>{{ donation.donationId }}</td>
+              <td>{{ donation.charityName }}</td>
+              <td>{{ donation.amount }}</td>
+              <td>{{ formatDateTime(donation.date) }}</td>
+              <td>{{ donation.sector }}</td>
+            </tr>
+            <tr *ngIf="filteredDonations.length === 0">
+              <td colspan="5" class="text-center">{{'dashboard.table.noResults' | translate}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <!-- Pagination Controls -->
+      <div class="d-flex justify-content-between align-items-center mt-3">
+        <button
+          class="btn btn-primary"
+          [disabled]="currentPage === 1"
+          (click)="currentPage = currentPage - 1"
+        >
+        {{'dashboard.pagination.previous' | translate}}
+        </button>
+        <span>{{'dashboard.pagination.page' | translate}} {{ currentPage }} {{'dashboard.pagination.of' | translate}} {{ totalPages }}</span>
+        <button
+          class="btn btn-primary"
+          [disabled]="currentPage === totalPages"
+          (click)="currentPage = currentPage + 1"
+        >
+        {{'dashboard.pagination.next' | translate}}
+        </button>
+      </div>
+
+      <button class="btn btn-primary mt-3 me-2" (click)="clearFilters()">{{'dashboard.buttons.clearFilters' | translate}}</button>
+      <button class="btn btn-success mt-3" (click)="downloadPDF()">
+        {{ 'dashboard.buttons.downloadPDF' | translate }}
+      </button>
+    </div>
+  </div>
+</div>
+<!-- Footer -->
+<div class="mt-5"><app-footer ></app-footer></div>

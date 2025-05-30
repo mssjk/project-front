@@ -1,0 +1,116 @@
+<!-- Navbar -->
+<app-navbar></app-navbar>
+<main>
+<!-- Dashboard Section -->
+<div class="container-fluid mt-4">
+  <h4 class="text-center fw-bold">{{'dashboard.title' | translate}}</h4>
+  <hr class="horizontal-line">
+
+  <div class="row">
+    <!-- Sidebar -->
+    <div class="col-md-3 mb-4">
+      <div class="sidebar">
+        <h5>{{'dashboard.sidebar.totalBalance' | translate}}</h5>
+        <h3>₹{{ dafBalance }}</h3>
+      </div>
+
+      <div class="section-box">
+        <h6>{{'dashboard.sidebar.totalDonation' | translate}}</h6>
+        <h4>₹{{ totalDonations }}</h4>
+      </div>
+
+      <div class="section-box">
+        <h6 >{{'dashboard.sidebar.charitiesDonatedTo' | translate}}</h6>
+      
+        <span *ngIf="charitiesDonatedTo.length !== 0; else nodata">
+          <p *ngFor="let charity of visibleCharities"><i class='bx bxs-donate-heart'>&nbsp;<span class="custom-text">{{ charity.name }}</span></i></p>
+            <p 
+            *ngIf="charitiesDonatedTo.length > 5" 
+            class="text-decoration-underline cursor-pointer btn-hover-effect view" 
+            (click)="toggleShowAll()"
+            >
+            {{ showAll ? ('dashboard.sidebar.viewless' | translate) : ('dashboard.sidebar.viewmore' | translate) }}
+            </p>
+        </span>
+      
+        <ng-template #nodata>
+          <p>{{'dashboard.sidebar.noCharities' | translate}}</p>
+        </ng-template>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="col-md-9">
+      <!-- Stylish Search Bar -->
+      <div class="d-flex justify-content-center mb-4 align-items-center">
+        <input
+          type="text"
+          class="form-control search-bar"
+          placeholder="{{'dashboard.search.placeholder' | translate}}"
+          [(ngModel)]="searchQuery"
+          (input)="filterCharities()"
+          
+        />
+      </div>
+
+      <!-- Filters -->
+      <div class="d-flex justify-content-between mb-4">
+        <select class="form-select" [(ngModel)]="selectedCategory" (change)="applyFilters()" >
+          <option value="">{{'dashboard.filters.categories' | translate}}</option>
+          <option *ngFor="let category of uniqueCategories">{{ category }}</option>
+        </select>
+        <select class="form-select" [(ngModel)]="selectedLocation" (change)="applyFilters()" >
+          <option value="">{{'dashboard.filters.locations' | translate}}</option>
+          <option *ngFor="let location of uniqueLocations">{{ location }}</option>
+        </select>
+      </div>
+
+      <!-- Stylish Table -->
+            <!-- Charities Table -->
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>{{'dashboard.table.headers.charity' | translate}}</th>
+              <th>{{'dashboard.table.headers.location' | translate}}</th>
+              <th>{{'dashboard.table.headers.category' | translate}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let charity of paginatedCharities">
+              <td>{{ charity.name }}</td>
+              <td>{{ charity.location }}</td>
+              <td>{{ charity.category }}</td>
+            </tr>
+            <tr *ngIf="paginatedCharities.length === 0">
+              <td colspan="3" class="text-center">{{'dashboard.table.noResults' | translate}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <!-- Pagination Controls -->
+      <div class="d-flex justify-content-between align-items-center mt-3">
+        <button
+          class="btn btn-primary"
+          [disabled]="currentPage === 1"
+          (click)="currentPage = currentPage - 1"
+        >
+        {{'dashboard.pagination.previous' | translate}}
+        </button>
+        <span>{{'dashboard.pagination.page' | translate}} {{ currentPage }} {{'dashboard.pagination.of' | translate}} {{ totalPages }}</span>
+        <button
+          class="btn btn-primary"
+          [disabled]="currentPage === totalPages"
+          (click)="currentPage = currentPage + 1"
+        >
+        {{'dashboard.pagination.next' | translate}}
+        </button>
+      </div>
+      <button class="btn btn-primary mt-3" (click)="resetFilters()">{{'dashboard.buttons.clearFilters' | translate}}</button>
+    </div>
+  </div>
+</div>
+</main>
+<!-- Footer -->
+ <div class="mt-5"><app-footer ></app-footer></div>

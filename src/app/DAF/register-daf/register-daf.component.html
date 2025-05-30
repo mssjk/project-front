@@ -1,0 +1,165 @@
+<!-- Navbar -->
+<app-navbar></app-navbar>
+<main>  
+  <!-- Registration Form -->
+  <div class="container-fluid">
+    <div class="row min-vh-100">
+      <div class="col-md-6 d-none d-md-flex align-items-center justify-content-center text-white">
+        <div class="text-center">
+          <img class="logo" src="{{getLogo()}}"  alt="Logo" />
+          <h4 class="mt-3">{{'home.heroSection.heading' | translate}}</h4>
+          <img  src="{{getImg()}}" alt="Donation Image" class="img-fluid logo1" />
+        </div>
+      </div>
+      <div class="col-md-5 d-flex align-items-center justify-content-center">
+        <div class="container">
+          <div class="login-box">
+            <h4 class="text-center mb-4">{{'registerDaf.form.title' | translate}}</h4>
+          
+            <form (ngSubmit)="registerUser()">
+              <!-- Full Name -->
+              <div class="mb-3">
+                <label class="form-label">{{'registerDaf.form.fields.name' | translate}}</label>
+                <input #nameInput="ngModel" class="form-control" [(ngModel)]="user.name" name="name" required />
+                <div class="invalid-feedback" *ngIf="nameInput?.invalid && nameInput?.touched">
+                  {{'registerDaf.form.errors.nameRequired' | translate}}
+                </div>
+              </div>
+          
+              <!-- Email -->
+              <div class="mb-3">
+                <label class="form-label">{{'registerDaf.form.fields.email' | translate}}</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  [ngClass]="{ 'is-invalid': emailExists || (emailInput?.invalid && emailInput?.touched) }"
+                  [(ngModel)]="user.email"
+                  name="email"
+                  #emailInput="ngModel"
+                  (input)="emailExists = false"
+                  required
+                  pattern="{{'registerDaf.form.check.email' | translate}}"
+                  
+                />
+                <!-- Error: Email already exists -->
+                <div class="invalid-feedback" *ngIf="emailExists">
+                  {{'registerDaf.form.errors.emailExists' | translate}}
+                </div>
+                <!-- Error: Invalid email format -->
+                <div class="invalid-feedback" *ngIf="emailInput?.errors?.['pattern'] && emailInput?.touched && !emailExists">
+                  {{'registerDaf.form.errors.emailRequired' | translate}}
+                </div>
+              </div>
+          
+              <!-- Password -->
+              <div class="mb-3 position-relative">
+                <label class="form-label d-flex align-items-center">
+                  {{ 'registerDaf.form.fields.password' | translate }}
+                  <span class="input-group ms-2 info-icon" (mouseenter)="showTooltip = true" (mouseleave)="showTooltip = false">
+                    <i class="fa-solid fa-circle-info"></i>
+                    <div class="tooltip-box" *ngIf="showTooltip">
+                      <ul>
+                        <li>{{ 'registerDaf.form.passwordTooltip.rule1' | translate }}</li>
+                        <li>{{ 'registerDaf.form.passwordTooltip.rule2' | translate }}</li>
+                        <li>{{ 'registerDaf.form.passwordTooltip.rule3' | translate }}</li>
+                        <li>{{ 'registerDaf.form.passwordTooltip.rule4' | translate }}</li>
+                        <li>{{ 'registerDaf.form.passwordTooltip.rule5' | translate }}</li>
+                      </ul>
+                    </div>
+                  </span>
+                </label>
+                <div class="input-group">
+                  <input
+                    [type]="showPassword ? 'text' : 'password'"
+                    class="form-control"
+                    [(ngModel)]="user.password"
+                    name="password"
+                    #passwordInput="ngModel"
+                    (input)="checkPasswordMatch()"
+                    required
+                  />
+                  <span class="input-group-text toggle-password" (click)="togglePassword()">
+                    <i class="fa" [ngClass]="showPassword ? 'fa-solid fa-eye-slash' : 'fa-solid fa-eye'"></i>
+                  </span>
+                </div>
+              </div>
+              
+              <!-- Confirm Password -->
+              <div class="mb-3 position-relative">
+                <label class="form-label">{{ 'registerDaf.form.fields.confirmPassword' | translate }}</label>
+                <div class="input-group">
+                  <input
+                    [type]="showConfirmPassword ? 'text' : 'password'"
+                    class="form-control"
+                    [(ngModel)]="confirmPassword"
+                    name="confirmPassword"
+                    #confirmPasswordInput="ngModel"
+                    (input)="checkPasswordMatch()"
+                    [ngClass]="{
+                      'is-invalid': confirmPasswordInput?.touched && !passwordsMatch
+                    }"
+                    required
+                  />
+                  <span class="input-group-text toggle-password" (click)="toggleConfirmPassword()">
+                    <i class="fa" [ngClass]="showConfirmPassword ? 'fa-solid fa-eye-slash' : 'fa-solid fa-eye'"></i>
+                  </span>
+                </div>
+                <div class="invalid-feedback" *ngIf="confirmPasswordInput?.touched && !passwordsMatch">
+                  {{ 'registerDaf.form.errors.passwordMismatch' | translate }}
+                </div>
+              </div>
+          
+              <!-- Mobile Number -->
+                            <!-- Mobile Number -->
+              <div class="mb-3">
+                <label class="form-label">{{'registerDaf.form.fields.mobile' | translate}}</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  [(ngModel)]="user.mobile"
+                  name="mobile"
+                  #mobileInput="ngModel"
+                  required
+                  pattern="^[0-9]{10}$"
+               
+                  [ngClass]="{ 'is-invalid': mobileInput?.invalid && mobileInput?.touched }"
+                />
+                <div class="invalid-feedback" *ngIf="mobileInput?.errors?.['pattern'] && mobileInput?.touched">
+                  {{'registerDaf.form.errors.mobileInvalid' | translate}}
+                </div>
+              </div>
+          
+              <!-- Location -->
+              <div class="mb-3">
+                <label class="form-label">{{'registerDaf.form.fields.location' | translate}}</label>
+                <input class="form-control" [(ngModel)]="user.location" name="location" required />
+              </div>
+          
+              <!-- Submit -->
+              <div class="d-grid">
+                <button type="submit" class="btn" >
+                  {{'registerDaf.form.buttons.register' | translate}}
+                </button>
+              </div>
+          
+              <!-- Link to Login -->
+              <div class="mt-3 text-center">
+                <span>{{'registerDaf.form.links.alreadyHaveAccount' | translate}}</span>
+                <a routerLink="/login">
+                  {{'registerDaf.form.buttons.login' | translate}}
+                </a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Registration Layout -->
+
+
+</main>
+  <!-- Footer -->
+  <div class="mt-5"><app-footer  ></app-footer>
+  </div>
+  

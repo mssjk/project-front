@@ -1,0 +1,106 @@
+body {
+    background-color: #f0f2f5;
+  }
+  
+  .sidebar {
+    background-color: #005F83;
+    color: white;
+    padding: 1rem;
+    border-radius: 5px;
+  }
+  
+  .section-box {
+    background-color: white;
+    color: #005F83;
+    padding: 1rem;
+    border-radius: 5px;
+    margin-top: 1rem;
+  }
+
+  .view{
+    cursor: pointer;
+  }
+  .table-page{
+    --bs-table-color: #fff;
+    --bs-table-bg: #005F83;
+    --bs-table-border-color: #3f5056;
+    --bs-table-striped-bg: #2c3034;
+    --bs-table-striped-color: #fff;
+    --bs-table-active-bg: #3f5056;
+    --bs-table-active-color: #fff;
+    --bs-table-hover-bg: #323539;
+    --bs-table-hover-color: #fff;
+    color: var(--bs-table-color);
+    border-color: var(--bs-table-border-color);
+  }
+  
+  .search-bar {
+    background-color: #fff;
+    
+    
+    border: none;
+    
+    font-weight: 500;
+
+    width: 70%; height: 50px; font-size: 1.2rem; border-radius: 25px; padding: 10px 20px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .form-select{
+    width: 48%; height: 45px; border-radius: 10px;
+  }
+  
+  .search-bar:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+  }
+  
+  .table-container {
+    overflow-x: auto;
+  }
+  
+  .table thead {
+    background-color: #005F83;
+    color: white;
+  }
+  
+  .horizontal-line {
+    height: 4px;
+    background-color: #ccc;
+    margin-bottom: 30px;
+    width: 100%;
+  }
+  .nav-link.active {
+color: rgb(255, 255, 255); /* Change to white or any desired color */
+font-weight: bold; /* Optional: Make the active link bold */
+
+}
+
+.nav-link {
+color: rgb(150, 230, 250);
+transition: color 0.3s ease; /* Optional: Add a smooth transition */
+}
+
+button {
+  background-color: #1b4674;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #1660af;
+}
+
+span p {
+  margin: 2px 0;
+  padding: 0;
+}
+
+.custom-text{
+  font-family: var(--bs-body-font-family);
+  font-size: 1rem;
+}
