@@ -1,0 +1,29 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: whitesmoke;
+}
+
+.main-content {
+  flex-grow: 1;
+  flex: 1;
+  flex-direction: column;
+  display: flex;
+}
+
+footer {
+  background-color: whitesmoke;
+  color: #005F83;
+  text-align: center;
+  padding: 1rem 0;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Optional: If you want the footer to be sticky even with little content, add: */
+body {
+  min-height: 100vh;
+}

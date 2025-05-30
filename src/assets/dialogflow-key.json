@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "voiceassistant-460315",
+  "private_key_id": "9a61c38bfa12b9615bb2b2964190530f9ae4fbd3",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDmTJ5kpkHQwWj9\n24X+C+1L6Z8dnjxqIGyz/espaQrchRwnldZRtIFCkL+fW5QMVlwAIjDJrMu0Sd/a\n9LDnVL3HfFR4omomErn16vQoExrBRwq1W/ELk3TKBwIs3dIqbs3iR8eYlTbRj58B\ndbgZD8aCVwJd5hzVboFQc5yGdkXpGDJNkC4u7quPwkW0F0YSUUTYipQKMWQrtt9a\nqgn+t3+CuO2qjx11KhJa9wAyGZl8zyQFaFnvQMHabxVGYygPJN6Yq7uYyIlsbsgn\npXOmjRl7rbTrkGyVrKG/WgqG+VrARfwMnnhD5QYuPhNZzRNEZ2SAXLv3RFuMs/0d\nP5JHzSE7AgMBAAECggEABY5Bn/H20n9n9f/OurM09Ujcgs1nbbP8i1cLzkLvdSRs\n6nON6QiuuZleVgzShH2s2H/6p1LY0y+ZC+ItRldgAKj6LLLWVrbK76jMXQ8g7Rq2\nomtmZD4ZaipDHiv3vvhPVS8gHIk0+lc5ocJiP5CG3GwW7Yb4mRmCWxt+4iuGQjo8\nfTc07gBeNp2V5fVVUJsYa8dVocs5wpDCiydUaBgqNMb4ni5RlJoBmuV54XBBkNry\nyde8WMyqUNEXS4mL4fXFtBBTl0PNZ6MWzKpnXSvt+4RhgpDk5Q745NzMEv0e3dw9\nVWrNT6QWEkKof1HiCj7SbDPY8J+5Wzxy+jbBiR0CCQKBgQD1DsshpCymtAKEk77r\nOQjrtGB5fDlrM3zkPIqSTlSEWVGyFnY95UpQ70YA7jKJ4SN86C0HX+sxp20ZDAkl\nXAT9Xll4UbDhhw1Fo2M6gFZxq2t9+bYXfgc5Afyv8aog9+irfGw9jxV2XNTjUx2+\nYgryCbemB6glOELxnvUnwmOWvQKBgQDwlR+zxkwauHuAblq9TsWsEO9r0azpnuw9\nhSBZLcjIKliYf2GdgqnNQb2AVOHg9M6GHaHzbK5HQYPUSw4ppB8f6yLgFc3fXUkm\nlY0wT/EqabPhS9EHNxSoZvKoLc8rDQCp1pxVMJ4PW2m2bPViye7hDYNh9qCWW0YZ\nzA6LkxZzVwKBgQDFrohYe/p1A7MgRZr2X0z97sUAWyBqhN9Tsi7KdRuio/bOJWZ+\n6a84eLxM1dm49f/Nq/FfCJZOuNO+J8Jc+80eonSkJan9VBd1vKa4M30INxMATWcB\nrm2fJCY1vEnUTIfJhhY+1mSm1Z36Pzs4MBjKROJ7saOHWspN5T+4MgxqNQKBgQDN\nlmGU+uumGehQA/2+sEXzmDVA6djde1Vd7RmLm7hsdONozdHZDAOWx4rs05yC5DBo\nI4J1xnXXpoDFNa5Qn1OJryIKZBedvNX6Buq0UlxAZju1V1i01bjtf6v1U9Apdd8P\nQ7osgnNPpEpd/hZj6TQdVbLkUCFC25S4DsyPMY6J2QKBgFog9owgngdb/i0bdihd\nlqY30mkqrSWbwGPZnKLa6p6W/HwRAl175jF4TAikVkdSvZSoXlwN5zw9GjvG25oq\nz+zDyE9jy/4vXHuttiXAzOlQdnOOhCasTj59Zed//StufWoaHdpr63+6ZrbznG9K\nkpXGbl1B8h0hdFkOd9JXs6fK\n-----END PRIVATE KEY-----\n",
+  "client_email": "dialogflow-service-account@voiceassistant-460315.iam.gserviceaccount.com",
+  "client_id": "102638348893757208095",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/dialogflow-service-account%40voiceassistant-460315.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

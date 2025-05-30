@@ -1,0 +1,291 @@
+{
+
+    "localStorage":{
+        "userName":"userName",
+        "UserName":"UserName",
+        "userId":"userId",
+        "UserId":"UserId",
+        "token":"token",
+        "refreshToken":"refreshToken"
+
+    },
+    "home": {
+        "navbar": {
+            "title": "Charitable Donation Tracker"
+        },
+        "heroSection": {
+            "heading": "Smart Giving, Measurable Impact",
+            "subheading": "Manage your charitable donations easily with Donor Advisor Fund"
+        },
+        "callToAction": {
+            "title": "Get Started in Just 2 Minutes",
+            "brokerage": "Brokerage Account",
+            "login": "Login to DAF Account",
+            "register": "Create DAF Account"
+        },
+        "benefits": {
+            "title": "Why Choose Our Platform?",
+            "secure": {
+                "heading": "Secure & Private",
+                "description": "All your data is protected with industry-standard security protocols."
+            },
+            "track": {
+                "heading": "Track Every Donation",
+                "description": "Instant overview of your donations and impact via dashboard."
+            },
+            "network": {
+                "heading": "Wide Charity Network",
+                "description": "Support a diverse range of trusted charities across sectors."
+            }
+        }
+    },
+
+    "registerDaf": {
+    "navbar": {
+      "title": "Charitable Donation Tracker"
+    },
+    "form": {
+      "title": "DAF REGISTRATION",
+      "fields": {
+        "name": "Full Name",
+        "email": "Email",
+        "password": "Password",
+        "confirmPassword": "Confirm Password",
+        "mobile": "Mobile Number",
+        "location": "Location"
+      },
+      "placeholders": {
+        "name": "Enter your full name",
+        "email": "Enter your email",
+        "password": "Enter your password",
+        "confirmPassword": "Re-enter your password",
+        "mobile": "Enter your mobile number",
+        "location": "Enter your location"
+      },
+      "errors": {
+        "nameRequired": "Please enter your full name.",
+        "emailRequired": "Please enter a valid email address.",
+        "emailExists": "This email is already registered.",
+        "passwordInvalid": "Please ensure your password meets the requirements.",
+        "passwordMismatch": "Passwords do not match.",
+        "mobileInvalid": "Please enter a valid 10-digit mobile number.",
+        "missingFields": "Please fill all required fields.",
+        "registrationFailed": "Registration failed. Try again."
+      },
+      "passwordTooltip": {
+        "rule1": "At least 1 uppercase letter",
+        "rule2": "At least 1 lowercase letter",
+        "rule3": "At least 1 number",
+        "rule4": "At least 1 special character",
+        "rule5": "Minimum 8 characters"
+      },
+      "success": {
+        "title": "Registration Successful!",
+        "message": "Your DAF Account Number is <b>{{accountNumber}}</b>"
+      },
+      "buttons": {
+        "register": "Register",
+        "login": "Login"
+      },
+      "links": {
+        "alreadyHaveAccount": "Already have an account?"
+      },
+      "check":{
+        "email": "^(?!.*\\.\\.)[a-zA-Z0-9._%+-]{1,64}@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"
+      }
+      
+    }
+  },
+  "login": {
+    "navbar": {
+      "title": "Charitable Donation Tracker"
+    },
+    "heroSection": {
+      "heading": "Smart Giving, Measurable Impact"
+    },
+    "form": {
+      "title": "LOGIN",
+      "brokerage": "BROKERAGE LOGIN",
+      "fields": {
+        "email": "Email",
+        "password": "Password"
+      },
+      "placeholders": {
+        "email": "Enter Email",
+        "password": "Enter Password"
+      },
+      "required": {
+        "email": "Please enter your email.",
+        "password": "Please enter your password."
+      },
+      "buttons": {
+        "login": "LOGIN",
+        "createAccount": "Create Account"
+      },
+      "links": {
+        "noAccount": "Don't have an account?"
+      }
+    },
+    "modals": {
+      "error": {
+        "title": "Error",
+        "message": "Unable to fetch broker account. Please try again later.",
+        "close": "Close"
+      }
+    },
+    "alerts": {
+      "loginSuccess": {
+        "title": "Login Successful!",
+        "message": "Welcome <b>{{userName}}</b>",
+        "button": "Go to Dashboard"
+      },
+      "loginFailed": {
+        "title": "Login Failed",
+        "message": "Invalid email or password. Please try again."
+      }
+    }
+  },
+  "dashboard": {
+    "title": "Account Dashboard",
+    "sidebar": {
+      "totalBalance": "Total Balance",
+      "totalDonation": "Total Donation",
+      "totalTransfer": "Total Transfer",
+      "charitiesDonatedTo": "Charities Donated To",
+      "noCharities": "No charities donated to yet.",
+      "viewless": "View Less",
+        "viewmore": "View More"
+    },
+    "search": {
+      "placeholder": "Search for charity..."
+    },
+    "filters": {
+      "categories": "All Categories",
+      "locations": "All Locations"
+    },
+    "table": {
+      "headers": {
+        "charity": "Charity",
+        "location": "Location",
+        "category": "Category",
+        "AccNo": "Account Number",
+        "Amt":  "Amount (₹)",
+        "ref": "Reference"
+      },
+      "noResults": "No results found",
+      "noTransfers": "No transfers made yet."
+    },
+    "Transfer":{
+        "title": "Transfer to DAF",
+        "form":{
+            "AccNo": "DAF Account Number",
+            "Amt":  "Amount (₹)",
+            "ref": "Reference"
+        },
+        "trans": "Transfer"
+    },
+    "pagination": {
+      "previous": "Previous",
+      "next": "Next",
+      "page": "Page",
+      "of": "of"
+    },
+    "buttons": {
+      "clearFilters": "Clear Filters",
+      "downloadPDF": "Download PDF"
+    },
+    "previousTransfer": "Previous Transfers"
+  },
+  "addDonation": {
+    "title": "Add Donation",
+    "sidebar": {
+      "totalBalance": "Total Balance",
+      "totalDonation": "Total Donation",
+      "charitiesDonatedTo": "Charities Donated To",
+      "noCharities": "No charities donated to yet."
+    },
+    "recommendation":{
+      "title":"Charity Recommendation",
+      "amount": "Recommended Amount:",
+      "amountPlaceholder": "Enter recommended amount",
+      "category": "Category",
+      "submitButton": "Recommend",
+      "result": "Recommended Charity"
+    },
+    "search": {
+      "placeholder": "Search for charity..."
+    },
+    "form": {
+      "donatingTo": "Donating to:",
+      "amount": "Amount:",
+      "amountPlaceholder": "Enter donation amount",
+      "description": "Description / Message (Optional):",
+      "descriptionPlaceholder": "Enter your message",
+      "terms": "I agree to all terms & conditions",
+      "donateButton": "Donate",
+      "htmlTagsError": "HTML tags are not allowed.",
+      "error": "Please fill in all fields and agree to the terms.",
+      "insufficientBalance": "Insufficient DAF balance.",
+      "success": "Donation Successful!"
+    },
+    "table":{
+      "headers": {
+        "charity": "Charity",
+        "percentage": "Percentage",
+        "amount": "Amount",
+        "actions": "Action"
+      },
+      "actions": {
+        "edit": "Edit",
+        "remove": "Remove"
+      },
+      "noResults": "No results found"
+    }
+  },
+  "viewDonation": {
+    "title": "View Donations",
+    
+    "filters": {
+      "sectors": "All Categories",
+      "durations": "All Durations",
+      "last24Hours": "Last 24 Hours",
+      "lastMonth": "Last Month",
+      "last3Months": "Last 3 Months",
+      "last6Months": "Last 6 Months",
+      "lastYear": "Last Year"
+    },
+    "table": {
+      "headers": {
+        "donationId": "Donation ID",
+        "charity": "Charity",
+        "amount": "Amount (₹)",
+        "date": "Date",
+        "sector": "Category"
+      }
+    }
+  },
+  "viewTransfer":{
+    "title": "View Transfers",
+    "filters": {
+
+      "durations": "All Durations",
+      "last24Hours": "Last 24 Hours",
+      "lastMonth": "Last Month",
+      "last3Months": "Last 3 Months",
+      "last6Months": "Last 6 Months",
+      "lastYear": "Last Year"
+    },
+    "table": {
+      "headers": {
+        "transferId": "Transfer ID",
+        "charity": "Charity",
+        "amount": "Amount (₹)",
+        "date": "Date",
+        "sector": "Category"
+      }
+    },
+    "clr": "Clear Filters",
+    "noResults": "No transfers made ",
+    "fil": "Filters"
+  }
+}
